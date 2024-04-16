@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios"
+import { AxiosCollections } from "../models/Collection"
 import { address, API_KEY_TEST } from './rarible-config'
 
 type OptionsCreater = (method: string, url: string, contentType: string, apiKey: string) => AxiosRequestConfig
@@ -29,8 +30,10 @@ export const getCollectionId = async (id: string) => {
   return res.data
 }
 
+// type axiosCollections = { data:}
 export const getCollectionAll = async (continuation: string) => {
   const options = createOptions('GET', address + `collections/all${'?continuation=' + continuation}&size=600`, 'application/json', API_KEY_TEST)
   const res: any = await axiosCall(options)
-  return res.data
+  console.log(res.data)
+  return res.data as AxiosCollections
 }
