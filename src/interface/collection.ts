@@ -8,6 +8,7 @@ export interface CollectionInterface{
     blockchain: string,
     meta: Meta
     type: string
+    name: string
 }
 export interface Meta{
     name: string,

@@ -6,31 +6,42 @@ body,
 
   .app{
     height: 100%;
-    background-color: antiquewhite;
+    background-color: rgb(225, 236, 239);
     
     header{
-      height: 100px;
+      height: 70px;
       width: 100%;
-      border-bottom: 3px solid grey;
 
       display: flex;
-      flex-direction: column;
       justify-content: center;
-      align-items: center;
+      align-items: end;
 
-      background-color: bisque;
+      position:relative;
+
+      // background-color: rgb(185, 181, 171);
 
       h1{
-        width: 50%;
         margin: 0;
         text-align: center;
+
+        color: rgb(60, 95, 123)
       }
 
       button{
-        height: 30px;
+        // height: 30px;
         width: 150px;
 
+        border: 2px solid rgb(216, 216, 216);
+        border-radius: 10px;
+        padding: 10px;
+
         font-size: 1.2rem;
+
+        background-color: rgb(211, 222, 229);
+        cursor: pointer;
+      }
+      button:hover{
+        background-color: rgb(173, 205, 215);
       }
     }
   }
@@ -38,19 +49,118 @@ body,
 
 
 .display{
-  height: 500px;
-  width: 500px;
+  height: 600px;
+  width: 600px;
 
   margin: 0 auto;
   margin-top: 20px;
-  // border: 2px solid rgba(114, 108, 52, 0.518);
+  padding: 20px;
 
   display: grid;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 20px;
 
-  // background-color: rgba(222, 184, 135, 0.23);
+  position:relative;
+  z-index: 1;
+
+  box-shadow: 10px 20px 20px 5px rgba(0, 0, 0, 0.5);
+
+
+  #popup{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(220, 220, 255, 0.249);
+    backdrop-filter: blur(8px);
+
+
+    #popup-msg{
+      height: 95%;
+      width: 95%;
+
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      justify-content: start;
+
+      position: relative;
+      z-index: 2;
+
+      background-color: rgba(240, 240, 239, 0.672);
+      box-shadow: 10px 20px 20px 5px rgba(0, 0, 0, 0.5);
+
+      button{
+        height: 50px;
+        width: 50px;
+
+        border: 0;
+
+        position: relative;
+        z-index: 2;
+
+        font-size: 2rem;
+        font-family: monospace, 'Courier New', Courier;
+        background-color: rgba(231, 110, 110, 0.41);
+
+        cursor:pointer;
+      }
+      button:hover{
+        background-color: rgb(201, 89, 89);
+      }
+
+      #image-div{
+        height: 100%;
+        width:100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+        overflow: hidden;
+
+        position: absolute;
+        // top: 10px;
+        // left: 10px;
+
+        img{
+          height: 90%;
+          width: 90%;
+  
+          position: absolute;
+          object-fit: contain;
+
+          // box-shadow: 10px 20px 20px 5px rgba(0, 0, 0, 0.5);
+  
+          cursor: pointer;
+        }
+        select{
+          width: 50%;
+          font-size: 0.7rem;
+          position:absolute;
+          bottom: 10px;
+          option{
+            max-width: 90%;
+
+
+          }
+        }
+      }
+
+
+      p{
+        font-size: 0.8rem;
+      }
+    }
+  }
 
   .display-item{
     display: flex;
@@ -63,6 +173,8 @@ body,
       max-height: 100%;
       max-width: 100%;
       object-fit: cover;
+
+      cursor: pointer;
     }
   }
 }

@@ -7,7 +7,7 @@ type HeaderProps = {
 
 const Header: React.FC<HeaderProps> = ({reload}) => {
     return <header>
-        <h1>Testing grounds</h1>
+        {/* <h1>Testing grounds</h1> */}
         <button id='rand-btn' onClick={() => reload(pre => pre +1)}>Regenerate</button>
     </header>
 }

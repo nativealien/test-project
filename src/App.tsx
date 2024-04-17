@@ -17,6 +17,7 @@ function App() {
       const colAll = await getCollectionAll(continuation)
       setContinuation(colAll.continuation)
       const filteredColl: CollectionInterface[] = filterCollection(colAll.collections)
+      console.log(filteredColl)
       setCollections(filteredColl)
     }
     loadCollection()
