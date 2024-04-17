@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import { CollectionInterface } from "../interface/collection"
+import { NftByCollInt } from "../interface/nft"
 import { getNftByCollection } from "../backend/rarible"
 import Popup from "./Popup"
 
 
 const Display = ({collections}: any) => {
     const [collList, setCollList]: any = useState('')
-    const [item, setItem] = useState(null) //({items: []})
+    const [item, setItem]: any | null = useState(null)
     useEffect( () => {
         const newList = async () => {
             const list: CollectionInterface[] = collections.splice(0, 16)
@@ -18,10 +19,8 @@ const Display = ({collections}: any) => {
 
     const handleClick = async (coll: CollectionInterface) => {
         let id = String(coll.id)
-        const res = await getNftByCollection(id)
-        // console.log(res)
-        // const resItems = await res.items
-        setItem(await res)
+        const res: NftByCollInt = await getNftByCollection(id)
+        setItem(res)
     }
 
     return <div className="display">

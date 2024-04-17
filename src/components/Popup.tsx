@@ -1,11 +1,11 @@
+import { Dispatch, SetStateAction } from "react"
+import { NftByCollInt, NftInterface } from "../interface/nft"
 
-const Popup = ({items, toggle}) => {
-    
-    const itemsArr = items.items
+type PopUpProp = { items: NftByCollInt, toggle: Dispatch<SetStateAction<null>>}
 
-    // const handleClick = (e) => {
-    //     toggle(null)
-    // }
+const Popup: React.FC<PopUpProp> = ({items, toggle}) => {
+    console.log(items)
+    const itemsArr: NftInterface[] = items.items
 
     return <div id="popup">
             <div id='popup-msg'>
