@@ -1,10 +1,15 @@
-import Nav from "./Nav"
+// import Nav from "./Nav"
+import { Dispatch, SetStateAction } from "react"
 
-const Header = () => {
-    return <div className="header">
-        <header><h1>Testing grounds</h1></header>
-        <Nav />
-    </div>
+type HeaderProps = {
+    reload: Dispatch<SetStateAction<number>>
+}
+
+const Header: React.FC<HeaderProps> = ({reload}) => {
+    return <header>
+        <h1>Testing grounds</h1>
+        <button id='rand-btn' onClick={() => reload(pre => pre +1)}>Regenerate</button>
+    </header>
 }
 
 export default Header

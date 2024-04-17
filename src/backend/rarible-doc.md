@@ -12,7 +12,7 @@ Collection is a collection of NFTs. In EVMs usually collection is a smart-contra
 
 /all
 
-?continuation=445
+?continuation=100
 
 &size=20
 

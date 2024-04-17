@@ -1,29 +1,30 @@
-// import { useState } from 'react'
 import './App.scss'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Header from './components/Header'
 import Display from './components/Display'
 import { getCollectionAll } from './backend/rarible'
 import { filterCollection } from './utilities/utils'
+import { CollectionInterface } from './interface/collection'
 
 function App() {
   const [continuation, setContinuation] = useState('')
-  const[collections, setCollections ] = useState()
+  const [collections, setCollections ]: Array<any> = useState([])
+  const [reload, setReload] = useState(0)
 
-  const loadCollection = async () => {
-    const colAll = await getCollectionAll(continuation)
-    const temp: string = colAll.continuation
-    setContinuation(temp)
-
-    const filteredColl = await filterCollection(colAll.collections)
-    setCollections(filteredColl)
-  }
-  if( continuation === '' ) loadCollection()
+  useEffect( () => {
+    setCollections([])
+    const loadCollection = async () => {
+      const colAll = await getCollectionAll(continuation)
+      setContinuation(colAll.continuation)
+      const filteredColl: CollectionInterface[] = filterCollection(colAll.collections)
+      setCollections(filteredColl)
+    }
+    loadCollection()
+  }, [reload])
 
   return <div className="app">
-    <Header />
-    {collections && <Display collections={collections} />}
-    <button onClick={() => loadCollection()}>Random</button>
+    <Header reload={setReload} />
+    { collections.length > 0 && <Display collections={collections} /> }
   </div>
 }
 

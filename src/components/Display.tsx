@@ -1,27 +1,25 @@
 import { useEffect, useState } from "react"
-import { CollectionInterface } from "../models/Collection"
-import NftCard from "./NftCard"
+import { CollectionInterface } from "../interface/collection"
 
 
 const Display = ({collections}: any) => {
     const [collList, setCollList]: any = useState('')
     useEffect( () => {
-
+        console.log(collections)
         const newList = async () => {
-            const list: CollectionInterface[] = collections.splice(0, 15)
+            const list: CollectionInterface[] = collections.splice(0, 16)
             setCollList(list)
         }
-        if(collList === '') newList()
-    })
+        newList()
+    }, [])
 
-    return <div className="display-wrap">
-        {/* <canvas></canvas> */}
-        <div className="display">
+    return <div className="display">
             {collList && collList.map( (coll: any) => {
-                return <NftCard coll={coll} />
+                return <div className="display-item">
+                        <img src={coll.meta.content[0].url} />
+                    </div>
             })}
         </div>
-    </div>
 }
 
 export default Display

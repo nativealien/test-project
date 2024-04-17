@@ -2,7 +2,9 @@
 
 const Nav = () => {
     return <div className="nav-bar">
-        Nav
+        <button className="nav-btn">Collections</button>
+        <button className="nav-btn">Items</button>
+        <button className="nav-btn">Search</button>
     </div>
 }
 
